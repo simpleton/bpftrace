@@ -1,1 +1,4 @@
 Sources of bpftrace were obtained from https://github.com/iovisor/bpftrace.
+Following modifications were made:
+- scripts/init_llvm_and_clang.sh script for bootstrapping clang and llvm
+  projects was added
