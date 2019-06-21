@@ -47,3 +47,54 @@ cc_library_headers {
         "ast",
     ],
 }
+
+gensrcs {
+    name: "bpftrace_lexer_sources",
+    srcs: ["lexer.l"],
+    cmd: "$(location flex) -o $(out) $(in)",
+    output_extension: "cc",
+    tools: ["flex"],
+}
+
+genrule {
+    name: "bpftrace_parser_sources",
+    srcs: ["parser.yy"],
+    cmd: "$(location bison3) -o $(out) $(in)",
+    out: [
+        "parser.tab.cc",
+    ],
+    tools: ["bison3"],
+}
+
+genrule {
+    name: "bpftrace_parser_headers",
+    srcs: ["parser.yy"],
+    cmd: "$(location bison3) -o $(genDir)/parser.tab.cc $(in)",
+    out: [
+        "location.hh",
+        "parser.tab.hh",
+        "position.hh",
+        "stack.hh",
+    ],
+    tools: ["bison3"],
+}
+
+cc_library_static {
+    name: "bpftrace_parser",
+    defaults: ["bpftrace_defaults"],
+    srcs: [],
+    cflags: [
+        "-Wno-implicit-fallthrough",
+        "-Wno-unused-function",
+    ],
+    generated_sources: [
+        "bpftrace_lexer_sources",
+        "bpftrace_parser_sources",
+    ],
+    generated_headers: [
+        "bpftrace_parser_headers",
+    ],
+    export_generated_headers: [
+        "bpftrace_parser_headers",
+    ],
+}
