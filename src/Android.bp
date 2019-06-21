@@ -98,3 +98,39 @@ cc_library_static {
         "bpftrace_parser_headers",
     ],
 }
+
+cc_binary {
+    name: "bpftrace",
+    defaults: ["bpftrace_defaults"],
+    srcs: ["*.cpp"],
+    lto: {
+        thin: true,
+    },
+    cflags: [
+        "-Wno-extern-c-compat",
+
+        // linux/compiler.h from libbpf collides with with the one provided by
+        // bionic. Bionic version defines two macros and we need to define them
+        // on our own.
+        "-D__user=",
+        "-D__force=",
+
+        // linux/types.h from libbpf does not defile __poll_t
+        "-D__poll_t=unsigned",
+    ],
+    static_libs: [
+        "bpftrace_arch",
+        "bpftrace_ast",
+        "bpftrace_parser",
+        "libbpf_bpftrace",
+        "libclang8",
+        "libelf",
+        "libllvm8",
+    ],
+    shared_libs: [
+        "libz",
+    ],
+    generated_sources: [
+        "bpftrace_resources",
+    ],
+}
