@@ -19,6 +19,9 @@ cc_defaults {
     header_libs: [
         "libbpf_bpftrace_headers",
     ],
+    export_header_lib_headers: [
+        "libbpf_bpftrace_headers",
+    ],
     cflags: [
         "-Wno-pointer-arith",
         "-Wno-unused-parameter",
@@ -52,5 +55,8 @@ cc_library_static {
     srcs: ["src/*.c"],
     static_libs: [
        "libelf",
+    ],
+    export_include_dirs: [
+        "api",
     ],
 }
