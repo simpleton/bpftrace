@@ -26,6 +26,7 @@
 #include <bcc/bcc_elf.h>
 #include <bcc/bcc_syms.h>
 #include <bcc/bcc_usdt.h>
+#include <bcc/kbuild_helper.h>
 #include <elf.h>
 
 #include <linux/version.h>
@@ -594,6 +595,11 @@ std::tuple<std::string, std::string> get_kernel_dirs(
       kpath_build_env = kpath_env;
     }
     return std::make_tuple(kpath_env, kpath_build_env);
+  }
+
+  std::string kheaders;
+  if (!ebpf::get_proc_kheaders(kheaders)) {
+    return std::make_tuple(kheaders, kheaders);
   }
 
   std::string kdir = std::string("/lib/modules/") + utsname.release;
