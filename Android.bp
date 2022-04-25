@@ -32,6 +32,10 @@ cc_defaults {
         // provided by bionic. Bionic version defines two macros and we need
         // one of them, define that one here as a workaround."
         "-D__user=",
+        "-D__force=",
+
+        // linux/types.h from include directory does not defile __poll_t
+        "-D__poll_t=unsigned",
     ],
 }
 
