@@ -23,6 +23,8 @@ cc_defaults {
         "libbpf_bpftrace_headers",
     ],
     cflags: [
+        "-Wno-constant-conversion",
+        "-Wno-missing-field-initializers",
         "-Wno-pointer-arith",
         "-Wno-unused-parameter",
 
