@@ -56,6 +56,9 @@ cc_library_static {
     static_libs: [
        "libelf",
     ],
+    shared_libs: [
+      "libz"
+    ],
     export_include_dirs: [
         "api",
     ],
