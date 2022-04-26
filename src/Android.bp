@@ -134,8 +134,6 @@ cc_binary {
         "libclang8",
         "libelf",
         "libllvm8",
-    ],
-    shared_libs: [
         "libz",
     ],
     generated_sources: [
