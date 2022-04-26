@@ -16,13 +16,19 @@
 
 cc_defaults {
     name: "bpftrace_defaults",
-    header_libs: ["bpftrace_headers"],
-
+    header_libs: [
+      "bpftrace_headers",
+      "libbccbpf_headers",
+    ],
     cflags: [
         "-Wno-format-security",
         "-Wno-implicit-fallthrough",
         "-Wno-unused-parameter",
         "-Wno-braced-scalar-init",
+        "-Wno-unused-private-field",
+        "-Wno-delete-abstract-non-virtual-dtor",
+        "-Wno-delete-non-abstract-non-virtual-dtor",
+        "-Wno-non-virtual-dtor",
         "-DBPFTRACE_VERSION=\"v0.9.1-android\"",
         "-DHAVE_BCC_PROG_LOAD=1",
         "-DHAVE_BCC_CREATE_MAP=1",
@@ -103,6 +109,8 @@ cc_binary {
     name: "bpftrace",
     defaults: ["bpftrace_defaults"],
     srcs: ["*.cpp"],
+    // Requires bfd.h, which we currently don't have or want.
+    exclude_srcs: ["bfd-disasm.cpp"],
     lto: {
         thin: true,
     },
