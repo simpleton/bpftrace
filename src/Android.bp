@@ -111,8 +111,9 @@ cc_binary {
     srcs: ["*.cpp"],
     // Requires bfd.h, which we currently don't have or want.
     exclude_srcs: ["bfd-disasm.cpp"],
+    static_executable: true,
     lto: {
-        thin: true,
+        never: true,
     },
     cflags: [
         "-Wno-extern-c-compat",
