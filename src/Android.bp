@@ -32,6 +32,7 @@ cc_defaults {
         "-DBPFTRACE_VERSION=\"v0.9.4-android\"",
         "-DHAVE_BCC_PROG_LOAD=1",
         "-DHAVE_BCC_CREATE_MAP=1",
+        "-DHAVE_BCC_ELF_FOREACH_SYM=1",
     ],
 
     cppflags: [
