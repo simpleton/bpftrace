@@ -116,6 +116,10 @@ cc_binary {
     lto: {
         never: true,
     },
+    strip: {
+        // Keep symbols around so that we can preserve BEGIN_trigger.
+        keep_symbols: true,
+    },
     cflags: [
         "-Wno-extern-c-compat",
 
