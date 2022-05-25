@@ -19,6 +19,7 @@ cc_defaults {
     header_libs: [
       "bpftrace_headers",
       "libbccbpf_headers",
+      "cereal",
     ],
     cflags: [
         "-Wno-format-security",
