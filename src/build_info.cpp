@@ -1,4 +1,5 @@
 #include <sstream>
+#include <llvm/Config/llvm-config.h>
 
 #include "build_info.h"
 
