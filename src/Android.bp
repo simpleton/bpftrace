@@ -113,8 +113,8 @@ cc_binary {
     name: "bpftrace",
     defaults: ["bpftrace_defaults"],
     srcs: ["*.cpp"],
-    // Requires bfd.h, which we currently don't have or want.
-    exclude_srcs: ["bfd-disasm.cpp"],
+    // Requires bfd.h, which we currently don't have or want. Remove fuzzing.
+    exclude_srcs: ["bfd-disasm.cpp", "fuzz_main.cpp"],
     static_executable: true,
     lto: {
         never: true,
