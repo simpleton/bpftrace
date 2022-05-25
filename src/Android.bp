@@ -34,6 +34,8 @@ cc_defaults {
         "-DHAVE_BCC_PROG_LOAD=1",
         "-DHAVE_BCC_CREATE_MAP=1",
         "-DHAVE_BCC_ELF_FOREACH_SYM=1",
+        "-DLIBBCC_ATTACH_KPROBE_SIX_ARGS_SIGNATURE=1",
+        "-DLIBBCC_ATTACH_UPROBE_SEVEN_ARGS_SIGNATURE=1",
     ],
 
     cppflags: [
