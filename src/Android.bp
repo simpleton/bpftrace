@@ -36,6 +36,7 @@ cc_defaults {
         "-DHAVE_BCC_ELF_FOREACH_SYM=1",
         "-DLIBBCC_ATTACH_KPROBE_SIX_ARGS_SIGNATURE=1",
         "-DLIBBCC_ATTACH_UPROBE_SEVEN_ARGS_SIGNATURE=1",
+        "-DLLVM_ORC_V1=1",
     ],
 
     cppflags: [
@@ -44,6 +45,7 @@ cc_defaults {
 
     static_libs: [
         "libbccbpf",
+        "libc++fs",
     ],
 
     rtti: true,
@@ -137,7 +139,9 @@ cc_binary {
     ],
     static_libs: [
         "bpftrace_arch",
+        "bpftrace_aot",
         "bpftrace_ast",
+        "bpftrace_cxxdemangler_llvm",
         "bpftrace_parser",
         "libbpf_bpftrace",
         "libclang8",
