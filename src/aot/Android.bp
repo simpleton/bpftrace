@@ -15,9 +15,9 @@
 //
 
 cc_library_static {
-    name: "bpftrace_ast",
+    name: "bpftrace_aot",
     defaults: ["bpftrace_defaults"],
-    srcs: ["*.cpp", "passes/*.cpp", "bpforc/bpforc.cpp"],
+    srcs: ["aot.cpp"],
     static_libs: [
         "bpftrace_parser",
         "libllvm8",
