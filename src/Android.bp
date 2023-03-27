@@ -130,6 +130,8 @@ cc_binary {
     },
     cflags: [
         "-Wno-extern-c-compat",
+        "-Wno-unused-function",
+        "-Wno-c++11-narrowing",
 
         // linux/compiler.h from libbpf collides with with the one provided by
         // bionic. Bionic version defines two macros and we need to define them
@@ -139,6 +141,7 @@ cc_binary {
 
         // linux/types.h from libbpf does not defile __poll_t
         "-D__poll_t=unsigned",
+
     ],
     static_libs: [
         "bpftrace_arch",
