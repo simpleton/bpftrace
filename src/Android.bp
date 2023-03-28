@@ -63,12 +63,9 @@ cc_library_headers {
 gensrcs {
     name: "bpftrace_lexer_sources",
     srcs: ["lexer.l"],
-    cmd: "M4=$(location m4) $(location flex) -o $(out) $(in)",
+    cmd: "$(location flex) -o $(out) $(in)",
     output_extension: "cc",
-    tools: [
-        "flex",
-        "m4",
-    ],
+    tools: ["flex"],
 }
 
 genrule {
