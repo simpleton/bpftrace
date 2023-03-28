@@ -13,6 +13,8 @@ and this project adheres to
 #### Deprecated
 #### Removed
 #### Fixed
+- Respect BPFTRACE_STRLEN environment variable for all strings
+  - [#2545](https://github.com/iovisor/bpftrace/pull/2545)
 #### Docs
 #### Tools
 
