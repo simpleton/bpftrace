@@ -542,7 +542,7 @@ namespace {
   std::string unpack_kheaders_tar_xz(const struct utsname& utsname)
   {
     std::error_code ec;
-    std_filesystem::path path_prefix{ "/tmp" };
+    std_filesystem::path path_prefix{ "/data/local/tmp" };
     std_filesystem::path path_kheaders{ "/sys/kernel/kheaders.tar.xz" };
     if (const char* tmpdir = ::getenv("TMPDIR")) {
       path_prefix = tmpdir;
