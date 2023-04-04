@@ -30,7 +30,7 @@ cc_defaults {
         "-Wno-delete-abstract-non-virtual-dtor",
         "-Wno-delete-non-abstract-non-virtual-dtor",
         "-Wno-non-virtual-dtor",
-        "-DBPFTRACE_VERSION=\"v0.17.0-android\"",
+        "-DBPFTRACE_VERSION=\"v0.17.0.1-android\"",
         "-DHAVE_BCC_PROG_LOAD=1",
         "-DHAVE_BCC_CREATE_MAP=1",
         "-DHAVE_BCC_ELF_FOREACH_SYM=1",
